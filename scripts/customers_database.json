@@ -1,0 +1,54 @@
+{
+  "Manfred": {
+    "Name": "Manfred",
+    "Camera_description": "Shirt Color: brown, Face Shape: Oblong, Skin Tone: Dark",
+    "Gemini_description": "Male, Not Wearing Spectacles, Gray T-shirt, Medium, Oval, No chair visible, standing near wall",
+    "Gemini_location": null,
+    "Comparison_result": {
+      "Camera_characteristics": {
+        "shirt_color": "Brown",
+        "face_shape": "Oblong",
+        "skin_tone": "Dark"
+      },
+      "Gemini_characteristics": {
+        "gender": "Male",
+        "glasses": "Wearing spectacles",
+        "shirt_color": "Gray",
+        "face_shape": "Oval",
+        "skin_tone": "Medium"
+      },
+      "Matching_characteristics": {},
+      "Match_count": 0
+    },
+    "Data_confidence": "medium",
+    "Registration_date": "2025-08-05 21:35:46",
+    "Gemini_timeout_occurred": false
+  },
+  "Shit": {
+    "Name": "Shit",
+    "Camera_description": "Shirt Color: brown, Face Shape: Oblong, Skin Tone: Medium",
+    "Gemini_description": "Male,Not Wearing Spectacles,Light Gray T-shirt,Medium,Oval,No chair,Standing near a wall",
+    "Gemini_location": null,
+    "Comparison_result": {
+      "Camera_characteristics": {
+        "shirt_color": "Brown",
+        "face_shape": "Oblong",
+        "skin_tone": "Medium"
+      },
+      "Gemini_characteristics": {
+        "gender": "Male",
+        "glasses": "Wearing spectacles",
+        "shirt_color": "Gray",
+        "face_shape": "Oval",
+        "skin_tone": "Medium"
+      },
+      "Matching_characteristics": {
+        "skin_tone": "Medium"
+      },
+      "Match_count": 1
+    },
+    "Data_confidence": "high",
+    "Registration_date": "2025-08-05 21:36:19",
+    "Gemini_timeout_occurred": false
+  }
+}
