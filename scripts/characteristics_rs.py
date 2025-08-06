@@ -6,9 +6,11 @@ import mediapipe as mp
 import pyzed.sl as sl
 import pyrealsense2 as rs
 import rospy
+import subprocess
 from cv_bridge import CvBridge, CvBridgeError
 from std_msgs.msg import String, Bool
 from sensor_msgs.msg import Image
+from std_srvs.srv import *
 
 mp_face_mesh = mp.solutions.face_mesh
 face_mesh = mp_face_mesh.FaceMesh(static_image_mode=False, max_num_faces=1)
@@ -77,6 +79,10 @@ pose = mp_pose.Pose()
 # mat = sl.Mat()
 
 #--------------------------RealSense------------------------------------
+rospy.loginfo("wait for shut_yolo service")
+rospy.wait_for_sevice("shut_depth")
+shutdown_depth = rospy.ServiceProxy("shut_depth", Trigger)
+result = shutdown_depth()
 pipeline = rs.pipeline()
 align_to = rs.stream.color
 align = rs.align(align_to)
@@ -111,8 +117,10 @@ def control_callback(msg):
     if msg.data == "stop":
         rospy.loginfo("📷 Camera node shutting down by request")
         # zed.close()
+        pipeline.stop()
         cv2.destroyAllWindows()
-        # rospy.signal_shutdown("Camera stopped externally")
+        subprocess.Popen("rosrun", "ffm_pkg depth.py")
+        rospy.signal_shutdown("Camera stopped externally")
 
 rospy.Subscriber('/enable_detection', Bool, detection_control_callback)
 rospy.Subscriber("/camera_control", String, control_callback)
